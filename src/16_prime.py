@@ -1,15 +1,21 @@
 import math
 
 def primeChecker(num):
-    # assume num is 100
-    currentPrime = 2
+    if num % 2 == 0:
+        return False
+    if num % 3 == 0:
+        return False
 
-    nums = {}
-    for i in range(1,num+1):
-        nums[i] = True
+    n = 5
+    for i in range(5,math.ceil(math.sqrt(num))):
+        if num % i == 0:
+            print(f"{num} is not prime. {num} is divisible by {i}.")
+            return False
     
-    for i in range(2, math.ceil(math.sqrt(num))):
-        print(i)
+    return True
+
+
+    
         
             
 
@@ -18,3 +24,4 @@ def primeChecker(num):
 
 
 print(primeChecker(100))
+print(primeChecker(95))
