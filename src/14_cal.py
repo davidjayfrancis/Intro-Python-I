@@ -30,3 +30,33 @@ it should use today’s date to get the month and year.
 import sys
 import calendar
 from datetime import datetime
+
+def displayWarning():
+  print("Please enter the [month] and [year] in your command line like so: ")
+  print("file_name.py [month] [year]")
+  print("If you only include one argument, we assume it is the month.")
+  print("If you don't include arguments, we'll display the current month.")
+
+# create textcalendar instance
+t = calendar.TextCalendar()
+
+# check arguments passed via command line
+# if none assume current month
+# if 1 assume month
+# if 2 assume month year
+# else user did something stupid, instruct them how to use app
+if len(sys.argv) == 1:
+  print(t.formatmonth(2020,7))
+
+elif len(sys.argv) == 2:
+  month = sys.argv[1]
+  print(t.formatmonth(2020, int(month)))
+
+elif len(sys.argv) == 3:
+  year = sys.argv[2]
+  month = sys.argv[1]
+  print(t.formatmonth(int(year), int(month)))
+else:
+  displayWarning()
+
+print(datetime.today())
